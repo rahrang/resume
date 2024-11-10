@@ -1,9 +1,13 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import Section from "~/components/Section.astro";
-import { buildUtmLink } from "~/utils/buildUtmLink";
+import { buildUtmLinkBuilder } from "~/utils/buildUtmLinkBuilder";
 import ExperienceItem from "~/components/ExperienceItem.astro";
 import List from "~/components/List.astro";
+
+const COMPANY_ID: string | null = null;
+
+const buildUtmLink = buildUtmLinkBuilder(COMPANY_ID);
 
 const SOCIAL_LINKS: {
   label?: string;
