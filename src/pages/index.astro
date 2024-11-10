@@ -1,123 +1,210 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import { buildUtmLink } from "~/utils/buildUtmLink";
+import ExperienceItem from "~/components/ExperienceItem.astro";
+import List from "~/components/List.astro";
+
+const SOCIAL_LINKS: {
+  label?: string;
+  text: string;
+  href: string;
+}[] = [
+  {
+    text: "rrangnekar96@gmail.com",
+    href: "mailto:rrangnekar96@gmail.com",
+  },
+  {
+    text: "rahrang.com",
+    href: buildUtmLink("https://www.rahrang.com"),
+  },
+  {
+    label: "LinkedIn",
+    text: "in/rahrang",
+    href: "https://www.linkedin.com/in/rahrang/",
+  },
+  {
+    label: "GitHub",
+    text: "rahrang",
+    href: "https://www.github.com/rahrang/",
+  },
+];
+
+const LATTICE_BULLETS: string[] = [
+  "Led 9-month project of 4 engineers to create Total Compensation product for 300+ Compensation customers",
+  "Engineered in several technical migrations of codebases, databases and employee data, authorization systems",
+  "Completed 35+ full-stack features, both iterative improvements and greenfield, across 7 product lines",
+  "As tech lead of Goals product, executed cross-domain project to enable Sales team to sell product standalone",
+  "Organized and implemented several engineering-wide projects to migrate frontend frameworks (React Router to Next.js, Relay Classic to Relay Modern), libraries (Moment.js to Date Functions, Redux Form to Formik), component library (Styled System to Chakra UI), and established design system",
+  "Ideated, designed, and developed set of in-app tools to augment developer efficiency in local environment",
+  "Built Datadog dashboards for observability into application performance, error tracking, real user metrics",
+  "Created Retool applications to enable Go To Market teams in supporting prospective and current customers, and Engineering and Product teams in debugging issues, reducing direct access to production databases",
+  "Added functionality and defined best practices within Lattice Slack application and Chrome Extension",
+];
+
+const CHANNELMETER_BULLETS: string[] = [
+  "Developed CRM software for 30+ media networks and brands to manage day-to-day administration and track performance of 350K+ social influencers across YouTube, Facebook, Instagram, Twitch, and Twitter",
+  "Engineered full-stack of 80+ page web application using React, Node.js, Golang, Cassandra, and BigTable",
+  "Built upon nightly CRON jobs to harvest data from various social media sources, primarily public APIs",
+  "Designed system to generate customizable PDF exports of influencer one-pagers using Puppeteer and React",
+  "Built audit log feature for admins to search, filter, and track modifications of sensitive user and company data",
+  "Improved site performance by refactoring 300+ component library, modifying 561 files, upgrading 93 packages",
+];
+
+const PROJECT_BULLETS: {
+  label: string;
+  href: string;
+  text: string;
+}[] = [
+  {
+    label: "matcha-stock.com",
+    href: buildUtmLink("https://www.matcha-stock.com"),
+    text: "Automatically tracks matcha availability from various vendors, notifies 1,500+ subscribers",
+  },
+  {
+    label: "fbpr.fyi",
+    href: buildUtmLink("https://www.fbpr.fyi"),
+    text: "Tracks current and historical Flying Blue Promo Rewards award travel deals by Air France & KLM",
+  },
+  {
+    label: "travelpartners.fyi",
+    href: buildUtmLink("https://www.travelpartners.fyi"),
+    text: "Tracks rates at which bank program points transfer to hotel & airline programs",
+  },
+  {
+    label: "brekky.fyi",
+    href: buildUtmLink("https://www.brekky.fyi"),
+    text: "A quick form wizard to determine whether or not you’ll receive breakfast at a Marriott property",
+  },
+  {
+    label: "pasta.fyi",
+    href: buildUtmLink("https://www.pasta.fyi"),
+    text: "A lifelong journey to catalog (and consume) every type of pasta",
+  },
+];
+
+const SKILL_BULLETS: {
+  label: string;
+  text: string;
+}[] = [
+  {
+    label: "Languages",
+    text: "JavaScript/TypeScript, GraphQL, HTML, CSS, SQL",
+  },
+  {
+    label: "Frameworks",
+    text: "React, Next.js, Remix, Astro / Relay / Node.js, NestJS / Tailwind CSS",
+  },
+  {
+    label: "Databases",
+    text: "PostgreSQL, Redis",
+  },
+  {
+    label: "Tools",
+    text: "Datadog, FullStory, Retool, Sentry, Segment",
+  },
+];
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<svg
-			class="astro-a"
-			width="495"
-			height="623"
-			viewBox="0 0 495 623"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-		>
-			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
-				d="M167.19 364.254C83.4786 364.254 0 404.819 0 404.819C0 404.819 141.781 19.4876 142.087 18.7291C146.434 7.33701 153.027 0 162.289 0H332.441C341.703 0 348.574 7.33701 352.643 18.7291C352.92 19.5022 494.716 404.819 494.716 404.819C494.716 404.819 426.67 364.254 327.525 364.254L264.41 169.408C262.047 159.985 255.147 153.581 247.358 153.581C239.569 153.581 232.669 159.985 230.306 169.408L167.19 364.254ZM160.869 530.172C160.877 530.18 160.885 530.187 160.894 530.195L160.867 530.181C160.868 530.178 160.868 530.175 160.869 530.172ZM136.218 411.348C124.476 450.467 132.698 504.458 160.869 530.172C160.997 529.696 161.125 529.242 161.248 528.804C161.502 527.907 161.737 527.073 161.917 526.233C165.446 509.895 178.754 499.52 195.577 500.01C211.969 500.487 220.67 508.765 223.202 527.254C224.141 534.12 224.23 541.131 224.319 548.105C224.328 548.834 224.337 549.563 224.347 550.291C224.563 566.098 228.657 580.707 237.264 593.914C245.413 606.426 256.108 615.943 270.749 622.478C270.593 621.952 270.463 621.508 270.35 621.126C270.045 620.086 269.872 619.499 269.685 618.911C258.909 585.935 266.668 563.266 295.344 543.933C298.254 541.971 301.187 540.041 304.12 538.112C310.591 533.854 317.059 529.599 323.279 525.007C345.88 508.329 360.09 486.327 363.431 457.844C364.805 446.148 363.781 434.657 359.848 423.275C358.176 424.287 356.587 425.295 355.042 426.275C351.744 428.366 348.647 430.33 345.382 431.934C303.466 452.507 259.152 455.053 214.03 448.245C184.802 443.834 156.584 436.019 136.218 411.348Z"
-				fill="url(#paint0_linear_1805_24383)"></path>
-			<defs>
-				<linearGradient
-					id="paint0_linear_1805_24383"
-					x1="247.358"
-					y1="0"
-					x2="247.358"
-					y2="622.479"
-					gradientUnits="userSpaceOnUse"
-				>
-					<stop stop-opacity="0.9"></stop>
-					<stop offset="1" stop-opacity="0.2"></stop>
-				</linearGradient>
-			</defs>
-		</svg>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
-</Layout>
+<Layout title="Rahul Rangnekar">
+  <main class="bg-green-50 h-full w-full px-8 py-8">
+    <header class="flex justify-between items-center mb-4">
+      <h1 class="font-semibold text-5xl">Rahul Rangnekar</h1>
+      <ul class="text-right">
+        {
+          SOCIAL_LINKS.map((link) => {
+            return (
+              <li class="text-sm">
+                <span>{link.label ? `${link.label}: ` : null}</span>
+                <span>
+                  <a
+                    class="underline underline-offset-2"
+                    href={link.href}
+                    target="_blank"
+                  >
+                    {link.text}
+                  </a>
+                </span>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </header>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>
+    <div class="space-y-6">
+      <Section title="Experience">
+        <div class="space-y-4">
+          <ExperienceItem
+            title="Lattice"
+            subtitle="Senior Software Engineer"
+            dateRange="Sep 2019 - Present"
+          >
+            <List>
+              {LATTICE_BULLETS.map((text) => <li>{text}</li>)}
+            </List>
+          </ExperienceItem>
+
+          <ExperienceItem
+            title="ChannelMeter"
+            subtitle="Software Engineer"
+            dateRange="May 2018 - Aug 2019"
+          >
+            <List>
+              {CHANNELMETER_BULLETS.map((text) => <li>{text}</li>)}
+            </List>
+          </ExperienceItem>
+
+          <ExperienceItem title="Projects">
+            <List>
+              {
+                PROJECT_BULLETS.map((bullet) => {
+                  return (
+                    <li>
+                      <p>
+                        <a
+                          class="underline inline-block whitespace-nowrap"
+                          href={bullet.href}
+                        >
+                          {bullet.label}
+                        </a>
+
+                        {/* hacky workaround because there seems to be a space after the anchor tag */}
+                        <span class="-ml-1">:</span>
+                        <span class="inline-block">{bullet.text}</span>
+                      </p>
+                    </li>
+                  );
+                })
+              }
+            </List>
+          </ExperienceItem>
+        </div>
+      </Section>
+
+      <Section title="Skills">
+        <List>
+          {
+            SKILL_BULLETS.map((bullet) => {
+              return (
+                <li>
+                  <span class="font-semibold">{bullet.label}</span>:
+                  {bullet.text}
+                </li>
+              );
+            })
+          }
+        </List>
+      </Section>
+
+      <Section title="Education">
+        <div class="flex items-baseline justify-between">
+          <span class="font-semibold">University of California, Berkeley</span>
+          <span>Berkeley, CA</span>
+        </div>
+        <div>B.A., Computer Science, College of Letters & Sciences</div>
+        <div>B.A., Economics, College of Letters & Sciences</div>
+      </Section>
+    </div>
+  </main>
+</Layout>

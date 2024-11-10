@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  dateRange?: string;
+}
+
+const { title, subtitle, dateRange } = Astro.props;
+---
+
+<div>
+  <div class="flex items-baseline justify-between text-sm">
+    <div>
+      <span class="font-semibold">{title}</span>
+      {subtitle && <span>{` | ${subtitle}`}</span>}
+    </div>
+    {dateRange && <div class="italic">{dateRange}</div>}
+  </div>
+
+  <slot />
+</div>

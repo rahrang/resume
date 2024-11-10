@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: "ss01", "ss03", "cv02", "cv03", "cv04", "cv05",
+      "cv06", "cv09";
+
+    --text-primary: theme("colors.slate.900");
+  }
+
+  body {
+    color: var(--text-primary);
+    background-color: white;
+  }
+
+  @supports (font-variation-settings: normal) {
+    :root {
+      font-family: InterVariable, sans-serif;
+    }
+  }
+}
