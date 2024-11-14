@@ -1,5 +1,5 @@
 ---
-import { Fathom } from "astro-fathom";
+// import { Fathom } from "astro-fathom";
 import "~/styles/globals.css";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const fathomSiteId = import.meta.env.FATHOM_SITE;
+// const fathomSiteId = import.meta.env.FATHOM_SITE;
 ---
 
 <!doctype html>
@@ -21,7 +21,7 @@ const fathomSiteId = import.meta.env.FATHOM_SITE;
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <Fathom site={fathomSiteId} />
+    <!-- <Fathom site={fathomSiteId} /> -->
   </head>
   <body class="w-[8.5in] h-[11in] mx-auto">
     <slot />
