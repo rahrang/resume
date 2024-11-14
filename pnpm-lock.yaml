@@ -20,6 +20,9 @@ importers:
       astro:
         specifier: ^4.16.10
         version: 4.16.10(@types/node@22.9.0)(rollup@4.25.0)(typescript@5.6.3)
+      astro-fathom:
+        specifier: ^2.0.0
+        version: 2.0.0
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -1051,6 +1054,9 @@ packages:
   astro-eslint-parser@1.0.3:
     resolution: {integrity: sha512-AGsGgcg7Jg9UpyCDgvl/EkdYpe1oMkFdmC2Zl+KWneoieLCtQIFjmcY8yt41gcNx4mby0w8BBJQcBmPuf8UAoQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  astro-fathom@2.0.0:
+    resolution: {integrity: sha512-Z0UXgAKrfJ43IRPhPzoXWOapVXF250AefvLaphsJViok551UpzIIDuxkUYX2CBXDtqIhH54KYPDaA9V9XyclgA==}
 
   astro-integration-kit@0.16.1:
     resolution: {integrity: sha512-N/iam0PAFrRT9azYZqscP1HowQhC77Dwlp912P0/72k+kwUVgO3m73F26XXukHYoZBsrHgrUrfsWBxuCH3kEUg==}
@@ -3823,6 +3829,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
       - typescript
+
+  astro-fathom@2.0.0: {}
 
   astro-integration-kit@0.16.1(astro@4.16.10(@types/node@22.9.0)(rollup@4.25.0)(typescript@5.6.3)):
     dependencies:
